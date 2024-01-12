@@ -1,0 +1,28 @@
+// media breakpoints
+$breakpoints: (
+  'xs': 29.6875em,
+  'sm': 40em,
+  'md': 48em,
+  'lg': 64em,
+  'xl': 80em,
+  'xxl': 96em,
+  'xxxl': 100em,
+) !default;
+
+@mixin breakpointMaxWidth($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+} // ornek kullanim: @include breakpointMaxWidth(sm) {}
+// cikti ==> media screen and (max-width:768px) {...}
+
+@mixin breakpointMinWidth($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+} // ornek kullanim: @include breakpointMinWidth(sm) {}
+// cikti ==> media screen and (min-width:768px) {...}
